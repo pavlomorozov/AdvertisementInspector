@@ -1,0 +1,15 @@
+html {
+  background-color: #f5f5f5;
+}
+
+.App {
+  text-align: center;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.App-header {
+  background-color: #777;
+  padding: 0px;
+  color: #cfc;
+}

@@ -1,0 +1,12 @@
+.Advertisement{
+  text-align: justify;
+}
+
+.advertisement-title{
+  background-color: #aaa;
+  color: #fff;
+}
+
+.advertisement-id, .advertisement-location{
+  font-size: small;
+}
