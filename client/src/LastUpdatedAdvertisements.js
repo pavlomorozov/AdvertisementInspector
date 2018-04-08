@@ -37,11 +37,6 @@ class LastUpdatedAdvertisements extends Component {
                   <td>
                     <Status status = {advertisement} />
                   </td>
-
-                  <td>
-                    Hello
-                  </td>
-
                   <td>
                     <Advertisement advertisement = {advertisement} />
                   </td>
