@@ -4,8 +4,6 @@ import { Table } from 'reactstrap';
 import Advertisement from './Advertisement';
 import Status from './Status';
 
-import './Advertisement.css';
-
 class LastUpdatedAdvertisements extends Component {
   constructor(props) {
     super();

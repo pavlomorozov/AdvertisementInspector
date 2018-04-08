@@ -7,6 +7,7 @@ var mysql = require("mysql");
 
 var indexRouter = require('./routes/index');
 var lastAdvertisementsRouter = require('./routes/last-advertisements');
+var keyStatisticsRouter = require('./routes/key-statistics');
 
 var app = express();
 
@@ -46,6 +47,7 @@ app.use(function(req, res, next){
 
 app.use('/', indexRouter);
 app.use('/api/last-advertisements', lastAdvertisementsRouter);
+app.use('/api/key-statistics', keyStatisticsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
