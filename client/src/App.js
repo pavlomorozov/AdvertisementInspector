@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 import LastUpdatedAdvertisements from './LastUpdatedAdvertisements';
 
@@ -28,7 +29,9 @@ class App extends Component {
         <header className = "App-header" >
           <h1 className = "App-title" > Advertisement inspector < /h1>
         < /header >
-        <LastUpdatedAdvertisements />
+        <Container>
+          <LastUpdatedAdvertisements />
+        </Container>
       < /div >);
     }}
 

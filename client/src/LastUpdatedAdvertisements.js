@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Table } from 'reactstrap';
 
 import Advertisement from './Advertisement';
 import Status from './Status';
@@ -27,21 +28,28 @@ class LastUpdatedAdvertisements extends Component {
     return (
       < div className = "LastUpdatedAdvertisements" >
         <h2>Last updated advertisements</h2>
-        <table>
-        {
-          this.state.lastAdvertisements.map(
-            advertisement =>
-              <tr id = {advertisement.id}>
-                <td>
-                  <Status status = {advertisement} />
-                </td>
-                <td>
-                  <Advertisement advertisement = {advertisement} />
-                </td>
-              </tr>
-          )
-        }
-        </table>
+        <Table hover>
+          <tbody>
+          {
+            this.state.lastAdvertisements.map(
+              advertisement =>
+                <tr id = {advertisement.id}>
+                  <td>
+                    <Status status = {advertisement} />
+                  </td>
+
+                  <td>
+                    Hello
+                  </td>
+
+                  <td>
+                    <Advertisement advertisement = {advertisement} />
+                  </td>
+                </tr>
+            )
+          }
+          </tbody>
+        </Table>
       < /div >
       );
     }
