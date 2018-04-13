@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import LastUpdatedAdvertisements from './LastUpdatedAdvertisements';
 import KeyStatistics from './KeyStatistics';
+import AdvertisementsView from './AdvertisementsView';
 
 import './App.css';
 
@@ -22,13 +23,23 @@ class App extends Component {
         < /header >
         <Container>
           <Row>
-            <Col>
-              <LastUpdatedAdvertisements />
+            <Col lg="8">
+              <AdvertisementsView />
             </Col>
-            <Col>
-              <KeyStatistics />
+            <Col lg="4">
+              <Row>
+                <Col>
+                  <LastUpdatedAdvertisements />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <KeyStatistics />
+                </Col>
+              </Row>
             </Col>
           </Row>
+
         </Container>
       < /div >);
     }}

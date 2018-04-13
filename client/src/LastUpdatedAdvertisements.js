@@ -31,7 +31,7 @@ class LastUpdatedAdvertisements extends Component {
           {
             this.state.lastAdvertisements.map(
               advertisement =>
-                <tr id = {advertisement.id}>
+                <tr key={advertisement.id+"-"+advertisement.is_open}>
                   <td>
                     <Status status = {advertisement} />
                   </td>

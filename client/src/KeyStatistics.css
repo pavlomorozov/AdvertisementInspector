@@ -1,0 +1,9 @@
+.keyStatisitcs .table thead th {
+  width: 20%;
+  vertical-align: middle;
+}
+
+.keyStatisitcs .table tbody td {
+  width: 20%;
+  vertical-align: middle;
+}

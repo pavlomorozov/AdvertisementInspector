@@ -6,12 +6,11 @@ router.get('/', function(req, res, next) {
 
 	var sqlQuery = `
     SELECT
-    	open_data.year,
-        open_data.month,
-        open_data.opened,
-        closed_data.closed,
-        opened_by_user_with_1_advertisement.opened AS openedByUserWith1advertisement,
-        closed_by_user_with_1_advertisement.closed AS closedByUserWith1advertisement
+    	CONCAT(open_data.year, "-", open_data.month) AS timeInterval,
+      open_data.opened,
+      closed_data.closed,
+      opened_by_user_with_1_advertisement.opened AS openedByUserWith1advertisement,
+      closed_by_user_with_1_advertisement.closed AS closedByUserWith1advertisement
     FROM
     	(SELECT
     		YEAR(status_min_date.updated) as year,
