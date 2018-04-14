@@ -3,12 +3,12 @@ html {
 }
 
 .App {
-  text-align: center;
   color: #333;
   background-color: #f5f5f5;
 }
 
 .App-header {
+  text-align: center;
   background-color: #777;
   padding: 0px;
   color: #cfc;
