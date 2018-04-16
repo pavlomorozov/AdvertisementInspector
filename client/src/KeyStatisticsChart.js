@@ -17,8 +17,8 @@ class KeyStatisticsChart extends Component {
       <ResponsiveContainer height={400}>
 
         <LineChart data={this.state.chartData}>
-          <Line type="monotone" dataKey="opened" stroke="#66eeee" />
-          <Line type="monotone" dataKey="closed" stroke="#ee66ee" />
+          <Line type="monotone" dataKey="opened" stroke="#339999" />
+          <Line type="monotone" dataKey="closed" stroke="#993399" />
           <CartesianGrid stroke="#ccc" strokeDasharray="10 10" />
           <XAxis dataKey="timeInterval" />
           <YAxis/>
