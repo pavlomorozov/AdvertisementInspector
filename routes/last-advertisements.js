@@ -20,10 +20,9 @@ router.get('/', function(req, res, next) {
       LIMIT 5
 	`;
 
-	res.locals.connection.query(sqlQuery
+	res.locals.mySQLPool.query(sqlQuery
 	, function (error, results, fields) {
 		if(error){
-			//res.send({"status": 500, "error": error, "lastAdvertisements": null});
 			res.send({"status": 500, "error": error});
 		}else{
 			res.send({"status": 200, "error": null, "lastAdvertisements": results});

@@ -143,7 +143,7 @@ router.get('/', function(req, res, next) {
   LIMIT 12
 	`;
 
-	res.locals.connection.query(sqlQuery
+	res.locals.mySQLPool.query(sqlQuery
 	, function (error, results, fields) {
 		if(error){
 			res.send({"status": 500, "error": error});

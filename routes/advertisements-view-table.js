@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
 
 	console.log(req.query.date);
-	
+
 	var sqlQuery = `
       SELECT
           advertisement.id,
@@ -22,14 +22,14 @@ router.get('/', function(req, res, next) {
       LIMIT 5
 	`;
 
-	res.locals.connection.query(sqlQuery
-	, function (error, results, fields) {
-		if(error){
-			res.send({"status": 500, "error": error});
-		}else{
-			res.send({"status": 200, "error": null, "advertisementsTableData": results});
-		}
-	});
+		/* pool.query() is shortcut for pool.getConnection() + connection.query() + connection.release() - see https://github.com/felixge/node-mysql/blob/master/lib/Pool.js#L194-L207 */
+		res.locals.mySQLPool.query(sqlQuery, function (error, results, fields) {
+			if(error){
+				res.send({"status": 500, "error": error});
+			}else{
+				res.send({"status": 200, "error": null, "advertisementsTableData": results});
+			}
+		});
 });
 
 module.exports = router;
