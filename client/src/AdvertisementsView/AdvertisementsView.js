@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { Table, Container, Row, Button, Form, FormGroup, Label, Input, Col} from 'reactstrap';
 
-import Advertisement from './Advertisement';
-import Status from './Status';
+import AdvertisementTable from './AdvertisementTable';
 
 import './AdvertisementsView.css';
 
@@ -49,9 +48,6 @@ export default class AdvertisementsView extends Component {
     }).catch(err => {
       console.log(err);
     })
-
-
-
   }
 
   render() {
@@ -71,44 +67,9 @@ export default class AdvertisementsView extends Component {
             </FormGroup>
           </div>
 
-
           <Button className="mb-2" onClick={this.handleSubmit}>Get</Button>
 
-
-
-
-
-
-
-
-
-          <Table hover>
-            <tbody>
-            {
-              this.state.advertisementsTableData.map(
-                advertisement =>
-                  <tr key={advertisement.id+"-"+advertisement.is_open}>
-                    <td>
-                      <Status status = {advertisement} />
-                    </td>
-                    <td>
-                      <Advertisement advertisement = {advertisement} />
-                    </td>
-                  </tr>
-              )
-            }
-            </tbody>
-          </Table>
-
-
-
-
-
-
-
-
-
-
+          <AdvertisementTable data = {this.state.advertisementsTableData} />
 
         </Form>
       </div>

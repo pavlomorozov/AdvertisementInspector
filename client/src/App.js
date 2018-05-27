@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import LastUpdatedAdvertisements from './LastUpdatedAdvertisements';
 import KeyStatistics from './KeyStatistics';
-import AdvertisementsView from './AdvertisementsView';
+import AdvertisementsView from './AdvertisementsView/AdvertisementsView';
 
 import './App.css';
 
