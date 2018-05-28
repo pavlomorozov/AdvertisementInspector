@@ -9,13 +9,20 @@ export default class AdvertisementsView extends Component {
 
   constructor(props) {
     super(props);
+
+    const todayString = (new Date()).toISOString().replace(/T.*/i,"");
+
     this.state = {
-      dateFrom: null,
-      dateTo: null,
+      dateFrom: todayString,
+      dateTo: todayString,
       advertisementsTableData: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.handleSubmit();
   }
 
   handleChange(e){
@@ -26,8 +33,10 @@ export default class AdvertisementsView extends Component {
   }
 
   handleSubmit(e) {
+    if (e != undefined){
+      e.preventDefault();
+    }
 
-    e.preventDefault();
     console.log("submit dates: " + this.state.dateFrom + " " + this.state.dateTo);
 
     var queryParameters = {
@@ -58,20 +67,17 @@ export default class AdvertisementsView extends Component {
           <div className="div-flex">
             <FormGroup className="group-inline mb-2  mr-sm-2">
               <Label className="label-inline mr-sm-2" for="dateFrom">from:</Label>
-              <Input className="input-inline" type="date" name="dateFrom" id="dateFrom" placeholder="date placeholder" onChange={this.handleChange}/>
+              <Input className="input-inline" type="date" name="dateFrom" id="dateFrom" placeholder="date placeholder" onChange={this.handleChange} value={this.state.dateFrom}/>
             </FormGroup>
 
             <FormGroup className="group-inline mb-2 mr-sm-2">
               <Label className="label-inline mr-sm-2" for="dateTo">to:</Label>
-              <Input className="input-inline" type="date" name="dateTo" id="dateTo" placeholder="date placeholder" onChange={this.handleChange}/>
+              <Input className="input-inline" type="date" name="dateTo" id="dateTo" placeholder="date placeholder" onChange={this.handleChange} value={this.state.dateTo}/>
             </FormGroup>
           </div>
-
           <Button className="mb-2" onClick={this.handleSubmit}>Get</Button>
-
-          <AdvertisementTable data = {this.state.advertisementsTableData} />
-
         </Form>
+        {this.state.advertisementsTableData.length != 0 ? <AdvertisementTable data = {this.state.advertisementsTableData} /> : <div> No data to show found </div>}
       </div>
     );
   }

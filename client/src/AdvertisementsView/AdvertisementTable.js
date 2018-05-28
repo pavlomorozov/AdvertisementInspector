@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 
-import { Table} from 'reactstrap';
+import {Table} from 'reactstrap';
 
 class AdvertisementTable extends Component {
   constructor(props) {
     super(props);
-    //this.state = {data : []};
   }
   render() {
     return (
       <Table style={{'table-layout': 'fixed'}} hover>
-        <tbody>
+        <tbody style={
+            {'display' : 'block',
+            'height' : '300px',
+            'overflow-y' : 'scroll'}}>
         {
           this.props.data.map(
             advertisement =>
@@ -43,7 +45,7 @@ class AdvertisementTable extends Component {
                       <span> activity: {advertisement.price_activity}; </span>
                     </div>
                     <div>
-                      <span> status: {advertisement.last_is_open}; </span>
+                      <span> status: {advertisement.last_is_open ? "open" : "closed"}; </span>
                       <span> first open: {advertisement.first_update.replace(/T.*/i,"")}; </span>
                       <span> open days: {advertisement.open_days}; </span>
                     </div>
