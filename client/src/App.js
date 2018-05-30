@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import LastUpdatedAdvertisements from './LastUpdatedAdvertisements';
+import LastUpdatedAdvertisements from './LastUpdatedAdvertisements/LastUpdatedAdvertisements';
 import KeyStatistics from './KeyStatistics';
 import AdvertisementsView from './AdvertisementsView/AdvertisementsView';
 

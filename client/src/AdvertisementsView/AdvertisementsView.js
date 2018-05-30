@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { Table, Container, Row, Button, Form, FormGroup, Label, Input, Col} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import AdvertisementTable from './AdvertisementTable';
+import ChosenAdvertisement from './ChosenAdvertisement';
 
 import './AdvertisementsView.css';
 
@@ -19,6 +20,16 @@ export default class AdvertisementsView extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.chooseAdvertisement = this.chooseAdvertisement.bind(this);
+  }
+
+  /*
+  Initiates show chosen advertisemen and
+  highlight advertisement in table row
+  */
+  chooseAdvertisement(advertisement){
+    console.log('chosen ad id: ' + advertisement.ad_id);
+    this.setState({chosenAdvertisement: advertisement});
   }
 
   componentDidMount() {
@@ -33,7 +44,7 @@ export default class AdvertisementsView extends Component {
   }
 
   handleSubmit(e) {
-    if (e != undefined){
+    if (e !== undefined){
       e.preventDefault();
     }
 
@@ -77,7 +88,12 @@ export default class AdvertisementsView extends Component {
           </div>
           <Button className="mb-2" onClick={this.handleSubmit}>Get</Button>
         </Form>
-        {this.state.advertisementsTableData.length != 0 ? <AdvertisementTable data = {this.state.advertisementsTableData} /> : <div> No data to show found </div>}
+        {this.state.advertisementsTableData.length !== 0 ?
+          <AdvertisementTable data = {this.state.advertisementsTableData} chooseAdvertisement={this.chooseAdvertisement}/> :
+          <div> No data to show found </div>}
+        {this.state.chosenAdvertisement !== undefined ?
+          <ChosenAdvertisement chosenAdvertisement = {this.state.chosenAdvertisement}/> :
+          <div> No advertisement chosen </div>}
       </div>
     );
   }
