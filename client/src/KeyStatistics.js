@@ -20,11 +20,8 @@ class KeyStatistics extends Component {
       return res.json()
     }).then(res => {
       console.log(res);
-
       var updatedState = {};
-
       updatedState.keyStatistics = res.keyStatistics;
-
       var chartData = res.keyStatistics.map(
         statRow => {
           var entry = {};
@@ -64,42 +61,40 @@ class KeyStatistics extends Component {
         <Table size="sm" hover responsive>
           <thead>
             <tr>
-              <th className="col-md-2" rowspan="2">Year-Month</th>
-              <th className="col-md-2" rowspan="2">Opened</th>
-              <th className="col-md-2" rowspan="2">Closed</th>
-              <th className="col-md-6" colspan="2">By user with 1 ad.</th>
+              <th rowSpan="2">Year-Month</th>
+              <th rowSpan="2">Opened</th>
+              <th rowSpan="2">Closed</th>
+              <th colSpan="2">By user with 1 ad.</th>
             </tr>
             <tr>
-              <th className="col-md-3">Opened</th>
-              <th className="col-md-3">Closed</th>
+              <th>Opened</th>
+              <th>Closed</th>
             </tr>
           </thead>
-
           <tbody>
           {
             this.state.keyStatistics.map(
               statRow =>
                 <tr key={statRow.timeInterval}>
-                  <td className="col-md-2">
+                  <td>
                     {statRow.timeInterval}
                   </td>
-                  <td className="col-md-2">
+                  <td>
                     {statRow.opened}
                   </td>
-                  <td className="col-md-2">
+                  <td>
                     {statRow.closed}
                   </td>
-                  <td className="col-md-3">
+                  <td>
                     {statRow.openedByUserWith1advertisement}
                   </td>
-                  <td className="col-md-3">
+                  <td>
                     {statRow.closedByUserWith1advertisement}
                   </td>
                 </tr>
             )
           }
           </tbody>
-
         </Table>
 
 
