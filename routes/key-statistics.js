@@ -143,14 +143,16 @@ router.get('/', function(req, res, next) {
   LIMIT 12
 	`;
 
-	res.locals.mySQLPool.query(sqlQuery
-	, function (error, results, fields) {
-		if(error){
-			res.send({"status": 500, "error": error});
-		}else{
-			res.send({"status": 200, "error": null, "keyStatistics": results});
-		}
+	res.locals.mySQLDatabase.query(sqlQuery)
+	.then(results => {
+		res.send({
+				"status": 200,
+				"error": null,
+				"keyStatistics": results});
+	}, error => {
+		res.send({"status": 500, "error": error});
 	});
+
 });
 
 module.exports = router;

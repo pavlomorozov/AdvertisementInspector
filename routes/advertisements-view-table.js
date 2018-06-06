@@ -160,13 +160,16 @@ router.get('/', function(req, res, next) {
 		const dateTo = new Date(req.query.dateTo);
 		dateTo.setDate(dateTo.getDate()+1);
 
-		res.locals.mySQLPool.query(sqlQuery, [dateFrom, dateTo],function (error, results, fields) {
-			if(error){
-				res.send({"status": 500, "error": error});
-			}else{
-				res.send({"status": 200, "error": null, "advertisementsTableData": results});
-			}
+		res.locals.mySQLDatabase.query(sqlQuery, [dateFrom, dateTo])
+		.then(results => {
+			res.send({
+					"status": 200,
+					"error": null,
+					"advertisementsTableData": results});
+		}, error => {
+			res.send({"status": 500, "error": error});
 		});
+
 });
 
 module.exports = router;
