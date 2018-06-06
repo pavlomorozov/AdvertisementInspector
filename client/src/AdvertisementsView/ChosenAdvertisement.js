@@ -5,6 +5,7 @@ import {Table} from 'reactstrap';
 class ChosenAdvertisement extends Component {
   constructor(props) {
     super(props);
+    console.log('ChosenAdvertisement constructor call');
   }
 
   render() {
@@ -57,6 +58,9 @@ class ChosenAdvertisement extends Component {
               </tr>
             </tbody>
           </Table>
+          {this.props.advertisementDetails !== undefined ?
+            this.props.advertisementDetails :
+            <div> No details found yet </div>}
         </div>
       );
     }
