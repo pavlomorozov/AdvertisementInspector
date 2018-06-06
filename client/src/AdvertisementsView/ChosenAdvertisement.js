@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Table} from 'reactstrap';
+import {Table, Span} from 'reactstrap';
 
 class ChosenAdvertisement extends Component {
   constructor(props) {
@@ -59,8 +59,39 @@ class ChosenAdvertisement extends Component {
             </tbody>
           </Table>
           {this.props.advertisementDetails !== undefined ?
-            this.props.advertisementDetails :
-            <div> No details found yet </div>}
+
+            <div>
+              <div>
+                {this.props.advertisementDetails.advertisementTags.map(tag =>
+                    <div>
+                      <span style={{'background-color':'#ccc'}}>Tags:</span>
+                      <span> {tag.tag_name}; </span>
+                    </div>
+                  )}
+              </div>
+
+              <div>
+                <span style={{'background-color':'#ccc'}}>Parameters:</span>
+                {this.props.advertisementDetails.advertisementDetails.map(parameter =>
+                    <span> {parameter.parameter_key} : {parameter.value}; </span>
+                  )
+                }
+              </div>
+
+              <div>
+                {this.props.advertisementDetails.advertisementDescription.map(description =>
+                  <p>
+                    <span style={{'background-color':'#ccc'}}>
+                      Updated:{description.updated.replace(/T.*/i,"")};
+                    </span>
+                    <span> {description.value}; </span>
+                  </p>
+                  )
+                }
+              </div>
+            </div>
+
+            : <div> No details found yet </div>}
         </div>
       );
     }

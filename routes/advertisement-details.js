@@ -39,7 +39,7 @@ router.get('/', function(req, res, next) {
     res.send({
         "status": 200,
         "error": null,
-        "details": responseData});
+        "advertisementDetails": responseData});
   }).catch (error => {
     res.send({"status": 500, "error": error});
   });
