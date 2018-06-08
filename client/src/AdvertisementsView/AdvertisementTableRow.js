@@ -14,36 +14,30 @@ class AdvertisementTableRow extends Component {
   }
 
   render() {
+    var chosen = false;
+    if (this.props.chosenAdvertisement) {
+      chosen = this.props.chosenAdvertisement.ad_id === this.props.advertisement.ad_id ? true : false;
+    }
+
     return (
-              <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick}>
+              <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'background-color':'#eee'} : {}}>
                 <td style={{'width': '30%'}}>
                   <div>
                     <span>{this.props.advertisement.user_name+';'}</span>
                     <span> ads: {this.props.advertisement.ads_number}; </span>
                   </div>
-                  <div style={{'fontSize': 'small'}}>
-                    <div>
-                      <a style={{'wordBreak': 'break-all'}} href={this.props.advertisement.user_url}>{this.props.advertisement.user_url}</a>
-                    </div>
-                  </div>
                 </td>
                 <td className="col-md-10">
-
-                  <div>
+                  <span>
                     {this.props.advertisement.caption}
                     <a href={this.props.advertisement.ad_url}> > </a>
-                  </div>
-                  <div style={{'fontSize': 'small'}}>
-                    <div>
+                  </span>
+                  <span style={{'fontSize': 'small'}}>
                       <span> $: {this.props.advertisement.last_price}; </span>
                       <span> {this.props.advertisement.location}; </span>
                       <span> {this.props.advertisement.last_is_open ? "open" : "closed"}; </span>
                       <span> shown: {this.props.advertisement.open_days} days; </span>
-                    </div>
-                    <div>
-
-                    </div>
-                  </div>
+                  </span>
                 </td>
               </tr>
       );

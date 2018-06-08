@@ -26,7 +26,7 @@ class AdvertisementTable extends Component {
         {
           this.props.data.map(
             advertisement =>
-              <AdvertisementTableRow key={advertisement.ad_id} advertisement={advertisement} chooseAdvertisement={this.props.chooseAdvertisement}/>
+              <AdvertisementTableRow key={advertisement.ad_id} advertisement={advertisement} chooseAdvertisement={this.props.chooseAdvertisement} chosenAdvertisement={this.props.chosenAdvertisement} />
 
           )
         }

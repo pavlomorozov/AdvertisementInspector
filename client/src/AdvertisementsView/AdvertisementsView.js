@@ -96,7 +96,7 @@ export default class AdvertisementsView extends Component {
             <div style={{'fontSize': 'small'}}>
               <span>Found : {this.state.advertisementsTableData.length}</span>
             </div>
-            <AdvertisementTable data = {this.state.advertisementsTableData} chooseAdvertisement={this.chooseAdvertisement}/>
+            <AdvertisementTable data = {this.state.advertisementsTableData} chooseAdvertisement={this.chooseAdvertisement} chosenAdvertisement={this.state.chosenAdvertisement}/>
           </div>:
           <div> No data to show found </div>}
         {this.state.chosenAdvertisement !== undefined ?
