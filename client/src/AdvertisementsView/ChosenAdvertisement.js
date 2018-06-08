@@ -70,25 +70,25 @@ class ChosenAdvertisement extends Component {
                   )}
               </div>
 
-              <div>
-                <span style={{'background-color':'#ccc'}}>Parameters:</span>
+              <p>
+                <span style={{'background-color':'#eee'}}>Parameters:</span>
                 {this.props.advertisementDetails.advertisementDetails.map(parameter =>
                     <span> {parameter.parameter_key} : {parameter.value}; </span>
                   )
                 }
-              </div>
+              </p>
 
-              <div>
+              <p>
                 {this.props.advertisementDetails.advertisementDescription.map(description =>
                   <p>
-                    <span style={{'background-color':'#ccc'}}>
+                    <span style={{'background-color':'#eee'}}>
                       Updated:{description.updated.replace(/T.*/i,"")};
                     </span>
                     <span> {description.value}; </span>
                   </p>
                   )
                 }
-              </div>
+              </p>
             </div>
 
             : <div> No details found yet </div>}
