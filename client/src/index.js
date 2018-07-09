@@ -8,18 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 //redux
 import { Provider } from 'react-redux';
-
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-
 import store from './store/index';
-
-console.log(store);
-
-//import thunk from 'redux-thunk';
-//import * as reducers from './store/reducers';
-//const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
-//const store = 'hello';
-//const store = createStore(reducer), initialState);
 
 render(
   <Provider store={store}>

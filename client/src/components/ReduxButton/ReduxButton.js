@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
-import { connect } from "react-redux";
+import React from 'react';
 import {Button} from 'reactstrap';
 import ReduxButtonText from './ReduxButtonText';
 
-const ReduxButton = ({buttonData}) => (
+const ReduxButton = () => (
   <Button>
     <ReduxButtonText/>
   </Button>
