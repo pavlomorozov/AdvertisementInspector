@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import LastUpdatedAdvertisements from './LastUpdatedAdvertisements/LastUpdatedAdvertisements';
-import KeyStatistics from './KeyStatistics';
-import AdvertisementsView from './AdvertisementsView/AdvertisementsView';
+import LastUpdatedAdvertisements from '../LastUpdatedAdvertisements/LastUpdatedAdvertisements';
+import KeyStatistics from '../KeyStatistics/KeyStatistics';
+import AdvertisementsView from '../AdvertisementsView/AdvertisementsView';
+import ReduxButton from '../ReduxButton/ReduxButton';
 
 import './App.css';
 
@@ -19,8 +20,9 @@ class App extends Component {
     return (
       < div className = "App" >
         <header className = "App-header" >
-          <h1 className = "App-title" > Advertisement inspector < /h1>
-        < /header >
+          <h1 className = "App-title" > Advertisement inspector </h1>
+        </header>
+        <ReduxButton/>
         <Container>
           <Row>
             <Col lg="8">

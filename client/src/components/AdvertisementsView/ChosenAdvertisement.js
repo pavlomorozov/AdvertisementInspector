@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Table, Span} from 'reactstrap';
+import {Table} from 'reactstrap';
 
 class ChosenAdvertisement extends Component {
   constructor(props) {
