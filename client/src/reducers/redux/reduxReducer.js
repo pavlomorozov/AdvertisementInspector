@@ -1,8 +1,8 @@
-const initialState = {
-  buttonData: 'redux init data here'
-};
+import {ADD_TEXT} from "../../actions/index"
 
-export const ADD_TEXT = 'redux.ADD_TEXT';
+const initialState = {
+  buttonData: '[redux init data here]'
+};
 
 const reduxReducer = (state = initialState, action) => {
   switch (action.type) {
