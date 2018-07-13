@@ -20,7 +20,7 @@ export default class AdvertisementsView extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.chooseAdvertisement = this.chooseAdvertisement.bind(this);
+    //this.chooseAdvertisement = this.chooseAdvertisement.bind(this);
   }
 
   /*
@@ -99,9 +99,7 @@ export default class AdvertisementsView extends Component {
             <AdvertisementTable data = {this.state.advertisementsTableData} chooseAdvertisement={this.chooseAdvertisement} chosenAdvertisement={this.state.chosenAdvertisement}/>
           </div>:
           <div> No data to show found </div>}
-        {this.state.chosenAdvertisement !== undefined ?
-          <ChosenAdvertisement chosenAdvertisement = {this.state.chosenAdvertisement} advertisementDetails={this.state.advertisementDetails}/> :
-          <div> No advertisement chosen </div>}
+          <ChosenAdvertisement/>
       </div>
     );
   }

@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
-//import * as advertisements from './advertisements/reducer'
+import advertisementsReducer from './advertisements/AdvertisementsReducer'
 import reduxReducer from './redux/reduxReducer'
 
 const rootReducer = combineReducers({
-   reduxReducer
+   reduxReducer,
+   advertisementsReducer
 });
 
 export default rootReducer;

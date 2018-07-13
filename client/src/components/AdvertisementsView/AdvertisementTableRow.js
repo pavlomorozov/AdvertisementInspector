@@ -1,26 +1,54 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux";
+import { chooseAdvertisement, getAdDetails } from "../../actions/index";
 
-class AdvertisementTableRow extends Component {
+const mapStateToProps = state => {
+  return { chosenAdvertisement: state.advertisementsReducer.chosenAdvertisement,
+    advertisementDetails: state.advertisementsReducer.advertisementDetails};
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    chooseAdvertisement: data => dispatch(chooseAdvertisement(data)),
+    getAdDetails:  data => dispatch(getAdDetails(data))
+  };
+}
+
+class ConnectedAdvertisementTableRow extends Component {
   constructor(props) {
     super(props);
     this.tableRowClick = this.tableRowClick.bind(this);
   }
 
   tableRowClick(e){
+    const advertisement = this.props.advertisement;
+    console.log('chosen ad id: ' + advertisement.ad_id);
+    //update store with ChosenAdvertisement
+    this.props.chooseAdvertisement(advertisement);
 
-    console.log("table row click event: " + e);
-    this.props.chooseAdvertisement(this.props.advertisement);
-
+    //call back end for Advertisement details and update store
+    this.props.getAdDetails(undefined);
+    console.log("call for advertisement details");
+    fetch(`/advertisement-details?id=${advertisement.ad_id}`).then(res => {
+      console.log(res);
+      return res.json()
+    }).then(res => {
+      console.log(res);
+      this.props.getAdDetails(res.advertisementDetails);
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   render() {
     var chosen = false;
+
     if (this.props.chosenAdvertisement) {
       chosen = this.props.chosenAdvertisement.ad_id === this.props.advertisement.ad_id ? true : false;
     }
 
     return (
-              <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'background-color':'#eee'} : {}}>
+              <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'backgroundColor':'#eee'} : {}}>
                 <td style={{'width': '30%'}}>
                   <div>
                     <span>{this.props.advertisement.user_name+';'}</span>
@@ -40,8 +68,10 @@ class AdvertisementTableRow extends Component {
                   </span>
                 </td>
               </tr>
-      );
-    }
+    );
   }
+}
 
-  export default AdvertisementTableRow;
+const AdvertisementTableRow = connect(mapStateToProps, mapDispatchToProps)(ConnectedAdvertisementTableRow);
+
+export default AdvertisementTableRow;

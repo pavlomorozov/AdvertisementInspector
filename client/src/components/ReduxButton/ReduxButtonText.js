@@ -16,13 +16,6 @@ class ConnectedReduxButtonText extends Component {
 
   constructor() {
     super();
-
-    this.state = {
-      buttonData: "123"
-    };
-
-    console.log(this);
-
     this.handleClick = this.handleClick.bind(this);
   }
 

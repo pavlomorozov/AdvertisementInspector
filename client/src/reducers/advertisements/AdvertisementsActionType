@@ -1,1 +1,0 @@
-export const ADVERTISEMENTS_FETCHED = 'advertisements.ADVERTISEMENTS_FETCHED';
