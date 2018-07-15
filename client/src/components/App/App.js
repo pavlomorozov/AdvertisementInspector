@@ -22,7 +22,6 @@ class App extends Component {
         <header className = "App-header" >
           <h1 className = "App-title" > Advertisement inspector </h1>
         </header>
-        <ReduxButton/>
         <Container>
           <Row>
             <Col lg="8">

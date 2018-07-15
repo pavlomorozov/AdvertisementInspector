@@ -20,32 +20,6 @@ export default class AdvertisementsView extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    //this.chooseAdvertisement = this.chooseAdvertisement.bind(this);
-  }
-
-  /*
-  Initiates show chosen advertisemen and
-  highlight advertisement in table row
-  */
-  chooseAdvertisement(advertisement){
-    console.log('chosen ad id: ' + advertisement.ad_id);
-    this.setState({chosenAdvertisement: advertisement});
-    this.setState({advertisementDetails: undefined});
-    /*
-    Call back end for advertisement properties and description
-    */
-    console.log("call for advertisement details");
-
-    fetch(`/advertisement-details?id=${advertisement.ad_id}`).then(res => {
-      console.log(res);
-      return res.json()
-    }).then(res => {
-      console.log(res);
-      this.setState({advertisementDetails: res.advertisementDetails});
-    }).catch(err => {
-      console.log(err);
-    })
-
   }
 
   componentDidMount() {
@@ -96,7 +70,7 @@ export default class AdvertisementsView extends Component {
             <div style={{'fontSize': 'small'}}>
               <span>Found : {this.state.advertisementsTableData.length}</span>
             </div>
-            <AdvertisementTable data = {this.state.advertisementsTableData} chooseAdvertisement={this.chooseAdvertisement} chosenAdvertisement={this.state.chosenAdvertisement}/>
+            <AdvertisementTable data = {this.state.advertisementsTableData} />
           </div>:
           <div> No data to show found </div>}
           <ChosenAdvertisement/>

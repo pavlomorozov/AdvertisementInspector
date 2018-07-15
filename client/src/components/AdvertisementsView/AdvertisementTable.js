@@ -7,13 +7,6 @@ import AdvertisementTableRow from './AdvertisementTableRow';
 class AdvertisementTable extends Component {
   constructor(props) {
     super(props);
-    this.tableRowClick = this.tableRowClick.bind(this);
-  }
-
-  tableRowClick(e){
-
-    console.log(e);
-
   }
 
   render() {
@@ -26,8 +19,7 @@ class AdvertisementTable extends Component {
         {
           this.props.data.map(
             advertisement =>
-              <AdvertisementTableRow key={advertisement.ad_id} advertisement={advertisement} chooseAdvertisement={this.props.chooseAdvertisement} chosenAdvertisement={this.props.chosenAdvertisement} />
-
+              <AdvertisementTableRow key={advertisement.ad_id} advertisement={advertisement}/>
           )
         }
         </tbody>
