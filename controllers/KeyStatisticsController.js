@@ -1,8 +1,4 @@
-var express = require('express');
-
-var router = express.Router();
-
-router.get('/', function(req, res, next) {
+var getStatistics = function(req, res, next) {
 
 	var sqlQuery = `
     SELECT
@@ -153,6 +149,6 @@ router.get('/', function(req, res, next) {
 		res.send({"status": 500, "error": error});
 	});
 
-});
+}
 
-module.exports = router;
+exports.getStatistics = getStatistics;

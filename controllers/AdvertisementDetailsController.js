@@ -1,8 +1,4 @@
-var express = require('express');
-
-var router = express.Router();
-
-router.get('/', function(req, res, next) {
+var getAdvertisementDetails = function(req, res, next) {
 
 	const detailsQuery = `
     SELECT * FROM parameter
@@ -43,7 +39,6 @@ router.get('/', function(req, res, next) {
   }).catch (error => {
     res.send({"status": 500, "error": error});
   });
+}
 
-});
-
-module.exports = router;
+exports.getAdvertisementDetails = getAdvertisementDetails;

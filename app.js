@@ -6,10 +6,6 @@ var logger = require('morgan');
 var Database = require("./Database");
 
 var indexRouter = require('./routes/index');
-var lastAdvertisementsRouter = require('./routes/last-advertisements');
-var keyStatisticsRouter = require('./routes/key-statistics');
-var advertisementsViewTableRouter = require('./routes/advertisements-view-table');
-var advertisementDetailsRouter = require('./routes/advertisement-details');
 
 var app = express();
 
@@ -29,10 +25,6 @@ app.use(function(req, res, next){
 });
 
 app.use('/', indexRouter);
-app.use('/api/last-advertisements', lastAdvertisementsRouter);
-app.use('/api/key-statistics', keyStatisticsRouter);
-app.use('/api/advertisements-view-table', advertisementsViewTableRouter);
-app.use('/api/advertisement-details', advertisementDetailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

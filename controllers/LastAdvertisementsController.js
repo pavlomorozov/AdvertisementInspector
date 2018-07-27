@@ -1,8 +1,4 @@
-var express = require('express');
-
-var router = express.Router();
-
-router.get('/', function(req, res, next) {
+var getLastAdvertisements = function(req, res, next) {
 
 	var sqlQuery = `
       SELECT
@@ -17,10 +13,12 @@ router.get('/', function(req, res, next) {
       ON advertisement.id = status.advertisement
 
       ORDER BY updated DESC
-      LIMIT 5
+      LIMIT ?
 	`;
 
-	res.locals.mySQLDatabase.query(sqlQuery)
+	const recordsLimit = 3
+
+	res.locals.mySQLDatabase.query(sqlQuery, [recordsLimit])
 	.then(results => {
 		res.send({
 				"status": 200,
@@ -30,6 +28,6 @@ router.get('/', function(req, res, next) {
 		res.send({"status": 500, "error": error});
 	});
 
-});
+}
 
-module.exports = router;
+exports.getLastAdvertisements = getLastAdvertisements;
