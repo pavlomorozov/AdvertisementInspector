@@ -5,9 +5,6 @@ import {Table} from 'reactstrap';
 import AdvertisementTableRow from './AdvertisementTableRow';
 
 class AdvertisementTable extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

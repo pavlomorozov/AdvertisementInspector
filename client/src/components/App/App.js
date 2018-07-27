@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import LastUpdatedAdvertisements from '../LastUpdatedAdvertisements/LastUpdatedAdvertisements';
 import KeyStatistics from '../KeyStatistics/KeyStatistics';
 import AdvertisementsView from '../AdvertisementsView/AdvertisementsView';
-import ReduxButton from '../ReduxButton/ReduxButton';
 
 import './App.css';
 

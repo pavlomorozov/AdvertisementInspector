@@ -8,9 +8,6 @@ const mapStateToProps = state => {
 };
 
 class ConnectedChosenAdvertisement extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
