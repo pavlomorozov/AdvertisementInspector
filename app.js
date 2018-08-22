@@ -7,6 +7,7 @@ var Database = require("./Database");
 
 var indexRouter = require('./routes/index');
 
+var dbPool;
 var app = express();
 
 // view engine setup
@@ -20,7 +21,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
-	res.locals.mySQLDatabase = new Database();
+	if (dbPool == undefined) {
+		dbPool = new Database()
+	}
+	res.locals.mySQLDatabase = dbPool;
 	next();
 });
 
