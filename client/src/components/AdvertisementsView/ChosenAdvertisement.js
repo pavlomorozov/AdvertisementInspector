@@ -13,7 +13,8 @@ class ConnectedChosenAdvertisement extends Component {
     return (
       <div>
         {this.props.chosenAdvertisement !== undefined ?
-          <div className='border rounded'>
+          <div style={{'backgroundColor':'#F5FCF5', 'border': '1px solid #7788AA',
+          'border-radius': '.25rem!important'}}>
             {/*
               Both borderless attribute and
               className='table-borderless'
@@ -34,8 +35,8 @@ class ConnectedChosenAdvertisement extends Component {
                         </div>
                       </div>
                     </td>
-                    <td  style={{'border':'none'}}>
-                      <div>
+                    <td style={{'border':'none'}}>
+                      <div style={{'color':'#525500'}}>
                         {this.props.chosenAdvertisement.caption}
                       </div>
                       <div style={{'fontSize': 'small'}}>
@@ -59,42 +60,53 @@ class ConnectedChosenAdvertisement extends Component {
                       </div>
                     </td>
                   </tr>
+
+                  <tr><td colSpan="2" style={{'border':'none'}}>
+                    {this.props.advertisementDetails !== undefined ?
+                      <div>
+                        <div>
+                          {this.props.advertisementDetails.advertisementTags.map(tag =>
+                              <div>
+                                <span style={{'background-color':'#ccc'}}>Tags:</span>
+                                <span> {tag.tag_name}; </span>
+                              </div>
+                            )}
+                        </div>
+
+                        <p>
+                          <span style={{'color':'#A6A938'}}>Parameters:</span>
+                          {this.props.advertisementDetails.advertisementDetails.map(parameter =>
+                              <span> {parameter.parameter_key} : {parameter.value}; </span>
+                            )
+                          }
+                        </p>
+
+                        <p>
+                          {this.props.advertisementDetails.advertisementDescription.map(description =>
+                            <p>
+                              <span style={{'color':'#A6A938'}}>
+                                Updated:{description.updated.replace(/T.*/i,"")};
+                              </span>
+                              <span> {description.value}; </span>
+                            </p>
+                            )
+                          }
+                        </p>
+                      </div>
+                : <div> No details found yet </div>}
+
+
+ </td></tr>
+
+
+
+
+
+
                 </tbody>
               </Table>
-              {this.props.advertisementDetails !== undefined ?
 
-                <div>
-                  <div>
-                    {this.props.advertisementDetails.advertisementTags.map(tag =>
-                        <div>
-                          <span style={{'background-color':'#ccc'}}>Tags:</span>
-                          <span> {tag.tag_name}; </span>
-                        </div>
-                      )}
-                  </div>
 
-                  <p>
-                    <span style={{'background-color':'#eee'}}>Parameters:</span>
-                    {this.props.advertisementDetails.advertisementDetails.map(parameter =>
-                        <span> {parameter.parameter_key} : {parameter.value}; </span>
-                      )
-                    }
-                  </p>
-
-                  <p>
-                    {this.props.advertisementDetails.advertisementDescription.map(description =>
-                      <p>
-                        <span style={{'background-color':'#eee'}}>
-                          Updated:{description.updated.replace(/T.*/i,"")};
-                        </span>
-                        <span> {description.value}; </span>
-                      </p>
-                      )
-                    }
-                  </p>
-                </div>
-
-                : <div> No details found yet </div>}
             </div>
           : <div> No advertisement chosen </div>}
         </div>

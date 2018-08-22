@@ -12,7 +12,8 @@ class AdvertisementTable extends Component {
         <tbody style={
             {'display' : 'block',
             'height' : '300px',
-            'overflowY' : 'scroll'}}>
+            'overflowY' : 'scroll',
+            'overflowX' : 'hidden'}}>
         {
           this.props.data.map(
             advertisement =>

@@ -56,14 +56,14 @@ class KeyStatistics extends Component {
     ) : "";
 
     return (
-      <div className = "keyStatisitcs" >
+      <div className = "keyStatisitcs" style={{'color':'#4E648E'}}>
         <h2>Key statistics</h2>
-        <Table size="sm" hover responsive>
+        <Table size="sm" responsive>
           <thead>
             <tr>
               <th rowSpan="2">Year-Month</th>
-              <th rowSpan="2">Opened</th>
-              <th rowSpan="2">Closed</th>
+              <th rowSpan="2" style={{'color':'#2D882D'}}>Opened</th>
+              <th rowSpan="2" style={{'color':'#A6A938'}}>Closed</th>
               <th colSpan="2">By user with 1 ad.</th>
             </tr>
             <tr>
@@ -79,10 +79,10 @@ class KeyStatistics extends Component {
                   <td>
                     {statRow.timeInterval}
                   </td>
-                  <td>
+                  <td style={{'color':'#2D882D'}}>
                     {statRow.opened}
                   </td>
-                  <td>
+                  <td style={{'color':'#A6A938'}}>
                     {statRow.closed}
                   </td>
                   <td>

@@ -48,15 +48,15 @@ class ConnectedAdvertisementTableRow extends Component {
     }
 
     return (
-      <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'backgroundColor':'#eee'} : {}}>
-        <td style={{'width': '30%'}}>
+      <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'backgroundColor':'#F5FCF5', 'border':'1px solid #7788AA !important'} : {}}>
+        <td style={{'width': '30%', 'border-color':'#7788AA'}}>
           <div>
             <span>{this.props.advertisement.user_name+';'}</span>
             <span> ads: {this.props.advertisement.ads_number}; </span>
           </div>
         </td>
-        <td className="col-md-10">
-          <span>
+        <td className="col-md-10" style={{'border-color':'#7788AA'}}>
+          <span style={{'color':'#525500'}}>
             {this.props.advertisement.caption}
             <a href={this.props.advertisement.ad_url}> > </a>
           </span>

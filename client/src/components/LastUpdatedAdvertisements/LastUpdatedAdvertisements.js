@@ -24,18 +24,18 @@ class LastUpdatedAdvertisements extends Component {
   }
   render() {
     return (
-      < div className = "LastUpdatedAdvertisements" >
+      < div className = "LastUpdatedAdvertisements" style={{'color':'#4E648E'}}>
         <h2>Last updated advertisements</h2>
-        <Table hover>
+        <Table >
           <tbody>
           {
             this.state.lastAdvertisements.map(
               advertisement =>
                 <tr key={advertisement.id+"-"+advertisement.is_open}>
-                  <td>
+                  <td style={{'border-color':'#7788AA'}}>
                     <Status status = {advertisement} />
                   </td>
-                  <td>
+                  <td style={{'border-color':'#7788AA'}}>
                     <Advertisement advertisement = {advertisement} />
                   </td>
                 </tr>

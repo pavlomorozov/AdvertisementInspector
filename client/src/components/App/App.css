@@ -1,9 +1,42 @@
+/*
+Once I get styles concept, it have sence to build
+custom Bootstrap theme, instead of apply style
+fixes on elements
+*/
+
 .App, html {
+  /*background-color: #fafafa;*/
   background-color: #fafafa;
 }
 
 .App-header {
   text-align: center;
-  background-color: #eee;
+  /*background-color: #eee;*/
+  background-color: #88CC88;
+  color: #fff;
   padding: 0px;
+}
+
+h2{
+  color: #4E648E;
+}
+
+.btn-secondary{
+  background-color: #7788AA !important;
+  border-color: #2D4471 !important;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #4E648E !important;
+  border-color: #2D4471 !important;
+}
+
+.btn-secondary.focus, .btn-secondary:focus {
+  box-shadow: 0 0 0 0.2rem #7788AA !important
+}
+
+.form-control{
+  color: #55AA55;
+  border: 1px solid #55AA55;
 }

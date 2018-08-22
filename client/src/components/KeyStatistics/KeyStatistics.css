@@ -7,3 +7,11 @@
   width: 20%;
   vertical-align: middle;
 }
+
+.keyStatisitcs th, .keyStatisitcs td {
+  border-color: #7788AA;
+}
+
+.keyStatisitcs thead th {
+  border-bottom: 1px solid #7788AA;
+}

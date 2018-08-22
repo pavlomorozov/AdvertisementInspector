@@ -16,7 +16,7 @@ var getLastAdvertisements = function(req, res, next) {
       LIMIT ?
 	`;
 
-	const recordsLimit = 3
+	const recordsLimit = 5
 
 	res.locals.mySQLDatabase.query(sqlQuery, [recordsLimit])
 	.then(results => {
