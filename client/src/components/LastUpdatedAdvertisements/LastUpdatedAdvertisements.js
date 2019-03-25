@@ -24,7 +24,7 @@ class LastUpdatedAdvertisements extends Component {
   }
   render() {
     return (
-      < div className = "LastUpdatedAdvertisements" style={{'color':'#4E648E'}}>
+      <div className = "LastUpdatedAdvertisements" style={{'color':'#4E648E'}}>
         <h2>Last updated advertisements</h2>
         <Table >
           <tbody>
@@ -43,7 +43,7 @@ class LastUpdatedAdvertisements extends Component {
           }
           </tbody>
         </Table>
-      < /div >
+      </div>
       );
     }
   }
