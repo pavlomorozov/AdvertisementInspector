@@ -49,24 +49,37 @@ class ConnectedAdvertisementTableRow extends Component {
 
     return (
       <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'backgroundColor':'#F5FCF5', 'border':'1px solid #7788AA !important'} : {}}>
-        <td style={{'width': '30%', 'border-color':'#7788AA'}}>
-          <div>
-            <span>{this.props.advertisement.user_name+';'}</span>
-            <span> ads: {this.props.advertisement.ads_number}; </span>
-          </div>
+        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+          {this.props.advertisement.user_name}
         </td>
-        <td className="col-md-10" style={{'border-color':'#7788AA'}}>
+        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+          {this.props.advertisement.ads_number}
+        </td>
+        <td class="w-75" style={{'padding':'2px','border-color':'#7788AA'}}>
           <span style={{'color':'#525500'}}>
             {this.props.advertisement.caption}
             <a href={this.props.advertisement.ad_url}> > </a>
           </span>
+        </td>
+        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+          ${this.props.advertisement.last_price}
+        </td>
+        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+          {this.props.advertisement.open_days}
+        </td>
+        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+          {this.props.advertisement.location}
+        </td>
+
+        {/* <td className="col-md-10" style={{'border-color':'#7788AA'}}>
           <span style={{'fontSize': 'small'}}>
               <span> $: {this.props.advertisement.last_price}; </span>
               <span> {this.props.advertisement.location}; </span>
               <span> {this.props.advertisement.last_is_open ? "open" : "closed"}; </span>
               <span> shown: {this.props.advertisement.open_days} days; </span>
           </span>
-        </td>
+        </td> */}
+
       </tr>
     );
   }
