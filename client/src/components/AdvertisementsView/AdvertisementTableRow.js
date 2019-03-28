@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import { connect } from "react-redux";
 import { showAdvertisement, chooseAdvertisement, getAdDetails } from "../../actions/index";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+
 const mapStateToProps = state => {
   return {
     showAdvertisement: state.advertisementsReducer.showAdvertisement,
@@ -62,9 +66,20 @@ class ConnectedAdvertisementTableRow extends Component {
           {this.props.advertisement.ads_number}
         </td>
         <td style={{'padding':'2px','borderColor':'#7788AA'}}>
+          {this.props.advertisement.last_is_open 
+            ? <FontAwesomeIcon icon={faCheckCircle} />
+            : <FontAwesomeIcon icon={faTimesCircle} />
+          }
+        </td>
+
+        
+
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
+          <a href={this.props.advertisement.ad_url}> > </a>
+        </td>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           <span style={{'color':'#525500'}}>
             {this.props.advertisement.caption}
-            <a href={this.props.advertisement.ad_url}> > </a>
           </span>
         </td>
         <td style={{'padding':'2px','borderColor':'#7788AA'}}>
