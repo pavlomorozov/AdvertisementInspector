@@ -1,20 +1,40 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import {Table} from 'reactstrap';
+import {Table, Button} from 'reactstrap';
+
+import { showAdvertisement } from "../../actions/index";
 
 const mapStateToProps = state => {
-  return { chosenAdvertisement: state.advertisementsReducer.chosenAdvertisement,
-    advertisementDetails: state.advertisementsReducer.advertisementDetails};
+  return { 
+    chosenAdvertisement: state.advertisementsReducer.chosenAdvertisement,
+    advertisementDetails: state.advertisementsReducer.advertisementDetails
+  };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    showAdvertisement: data => dispatch(showAdvertisement(data))
+  };
+}
+
 class ConnectedChosenAdvertisement extends Component {
+
+  constructor(props) {
+    super(props);
+    this.backToTableView = this.backToTableView.bind(this);
+  }
+
+  backToTableView(e){
+    this.props.showAdvertisement(false);
+  }
 
   render() {
     return (
       <div>
+        <Button className="mb-2" onClick={this.backToTableView}>Back to table view</Button>
         {this.props.chosenAdvertisement !== undefined ?
           <div style={{'backgroundColor':'#F5FCF5', 'border': '1px solid #7788AA',
-          'border-radius': '.25rem!important'}}>
+          'borderRadius': '.25rem!important'}}>
             {/*
               Both borderless attribute and
               className='table-borderless'
@@ -61,52 +81,44 @@ class ConnectedChosenAdvertisement extends Component {
                     </td>
                   </tr>
 
-                  <tr><td colSpan="2" style={{'border':'none'}}>
-                    {this.props.advertisementDetails !== undefined ?
-                      <div>
+                  <tr>
+                    <td colSpan="2" style={{'border':'none'}}>
+                      {this.props.advertisementDetails !== undefined ?
                         <div>
-                          {this.props.advertisementDetails.advertisementTags.map(tag =>
-                              <div>
-                                <span style={{'background-color':'#ccc'}}>Tags:</span>
-                                <span> {tag.tag_name}; </span>
-                              </div>
-                            )}
+                          <div>
+                            {this.props.advertisementDetails.advertisementTags.map(tag =>
+                                <div>
+                                  <span style={{'background-color':'#ccc'}}>Tags:</span>
+                                  <span> {tag.tag_name}; </span>
+                                </div>
+                              )}
+                          </div>
+
+                          <p>
+                            <span style={{'color':'#A6A938'}}>Parameters:</span>
+                            {this.props.advertisementDetails.advertisementDetails.map(parameter =>
+                                <span> {parameter.parameter_key} : {parameter.value}; </span>
+                              )
+                            }
+                          </p>
+
+                          <p>
+                            {this.props.advertisementDetails.advertisementDescription.map(description =>
+                              <p>
+                                <span style={{'color':'#A6A938'}}>
+                                  Updated:{description.updated.replace(/T.*/i,"")};
+                                </span>
+                                <span> {description.value}; </span>
+                              </p>
+                              )
+                            }
+                          </p>
                         </div>
-
-                        <p>
-                          <span style={{'color':'#A6A938'}}>Parameters:</span>
-                          {this.props.advertisementDetails.advertisementDetails.map(parameter =>
-                              <span> {parameter.parameter_key} : {parameter.value}; </span>
-                            )
-                          }
-                        </p>
-
-                        <p>
-                          {this.props.advertisementDetails.advertisementDescription.map(description =>
-                            <p>
-                              <span style={{'color':'#A6A938'}}>
-                                Updated:{description.updated.replace(/T.*/i,"")};
-                              </span>
-                              <span> {description.value}; </span>
-                            </p>
-                            )
-                          }
-                        </p>
-                      </div>
-                : <div> No details found yet </div>}
-
-
- </td></tr>
-
-
-
-
-
-
+                      : <div> No details found yet </div>}
+                    </td>
+                  </tr>
                 </tbody>
               </Table>
-
-
             </div>
           : <div> No advertisement chosen </div>}
         </div>
@@ -114,6 +126,6 @@ class ConnectedChosenAdvertisement extends Component {
     }
   }
 
-  const ChosenAdvertisement = connect(mapStateToProps)(ConnectedChosenAdvertisement);
+  const ChosenAdvertisement = connect(mapStateToProps, mapDispatchToProps)(ConnectedChosenAdvertisement);
 
   export default ChosenAdvertisement;

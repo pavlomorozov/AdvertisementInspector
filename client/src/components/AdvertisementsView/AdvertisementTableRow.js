@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import { chooseAdvertisement, getAdDetails } from "../../actions/index";
+import { showAdvertisement, chooseAdvertisement, getAdDetails } from "../../actions/index";
 
 const mapStateToProps = state => {
-  return { chosenAdvertisement: state.advertisementsReducer.chosenAdvertisement,
-    advertisementDetails: state.advertisementsReducer.advertisementDetails};
+  return {
+    showAdvertisement: state.advertisementsReducer.showAdvertisement,
+    chosenAdvertisement: state.advertisementsReducer.chosenAdvertisement,
+    advertisementDetails: state.advertisementsReducer.advertisementDetails
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    showAdvertisement: data => dispatch(showAdvertisement(data)),
     chooseAdvertisement: data => dispatch(chooseAdvertisement(data)),
     getAdDetails:  data => dispatch(getAdDetails(data))
   };
@@ -23,6 +27,8 @@ class ConnectedAdvertisementTableRow extends Component {
   tableRowClick(e){
     const advertisement = this.props.advertisement;
     console.log('chosen ad id: ' + advertisement.ad_id);
+    //show advertisement data component and hide table
+    this.props.showAdvertisement(true);
     //update store with ChosenAdvertisement
     this.props.chooseAdvertisement(advertisement);
 
@@ -49,25 +55,25 @@ class ConnectedAdvertisementTableRow extends Component {
 
     return (
       <tr key={this.props.advertisement.ad_id} onClick={this.tableRowClick} className={chosen ? 'border rounded':''} style={chosen ? {'backgroundColor':'#F5FCF5', 'border':'1px solid #7788AA !important'} : {}}>
-        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           {this.props.advertisement.user_name}
         </td>
-        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           {this.props.advertisement.ads_number}
         </td>
-        <td class="w-75" style={{'padding':'2px','border-color':'#7788AA'}}>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           <span style={{'color':'#525500'}}>
             {this.props.advertisement.caption}
             <a href={this.props.advertisement.ad_url}> > </a>
           </span>
         </td>
-        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           ${this.props.advertisement.last_price}
         </td>
-        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           {this.props.advertisement.open_days}
         </td>
-        <td class="w-5" style={{'padding':'2px','border-color':'#7788AA'}}>
+        <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           {this.props.advertisement.location}
         </td>
 

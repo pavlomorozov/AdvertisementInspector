@@ -1,25 +1,33 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
+import { connect } from "react-redux";
+
 import AdvertisementTable from './AdvertisementTable';
 import ChosenAdvertisement from './ChosenAdvertisement';
 
 import './AdvertisementsView.css';
 
-export default class AdvertisementsView extends Component {
+const mapStateToProps = state => {
+  return {
+    showAdvertisement: state.advertisementsReducer.showAdvertisement
+  };
+}
+
+class ConnectedAdvertisementsView extends Component {
 
   constructor(props) {
     super(props);
 
-    const todayString = (new Date()).toISOString().replace(/T.*/i,"");
+     const todayString = (new Date()).toISOString().replace(/T.*/i,"");
 
-    this.state = {
-      dateFrom: todayString,
-      dateTo: todayString,
-      advertisementsTableData: []
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+     this.state = {
+       dateFrom: todayString,
+       dateTo: todayString,
+       advertisementsTableData: []
+     };
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51,30 +59,41 @@ export default class AdvertisementsView extends Component {
     return (
       <div>
         <h2> Advertisements view </h2>
-        <Form>
-          <div className="div-flex">
-            <FormGroup className="group-inline mb-2  mr-sm-2">
-              <Label className="label-inline mr-sm-2" for="dateFrom">from:</Label>
-              <Input className="input-inline" type="date" name="dateFrom" id="dateFrom" placeholder="date placeholder" onChange={this.handleChange} value={this.state.dateFrom}/>
-            </FormGroup>
 
-            <FormGroup className="group-inline mb-2 mr-sm-2">
-              <Label className="label-inline mr-sm-2" for="dateTo">to:</Label>
-              <Input className="input-inline" type="date" name="dateTo" id="dateTo" placeholder="date placeholder" onChange={this.handleChange} value={this.state.dateTo}/>
-            </FormGroup>
-          </div>
-          <Button className="mb-2" onClick={this.handleSubmit}>Get</Button>
-        </Form>
-        {this.state.advertisementsTableData.length !== 0 ?
+        {!this.props.showAdvertisement ? 
           <div>
-            <div style={{'fontSize': 'small'}}>
-              <span>Found : {this.state.advertisementsTableData.length}</span>
+            <Form>
+              <div className="div-flex">
+                <FormGroup className="group-inline mb-2  mr-sm-2">
+                  <Label className="label-inline mr-sm-2" for="dateFrom">from:</Label>
+                  <Input className="input-inline" type="date" name="dateFrom" id="dateFrom" placeholder="date placeholder" onChange={this.handleChange} value={this.state.dateFrom}/>
+                </FormGroup>
+
+                <FormGroup className="group-inline mb-2 mr-sm-2">
+                  <Label className="label-inline mr-sm-2" for="dateTo">to:</Label>
+                  <Input className="input-inline" type="date" name="dateTo" id="dateTo" placeholder="date placeholder" onChange={this.handleChange} value={this.state.dateTo}/>
+                </FormGroup>
+
+                <Button className="mb-2" onClick={this.handleSubmit}>Get</Button>
+
+              </div>
+            </Form>
+
+            <div >
+              <div style={{'fontSize': 'small'}}>
+                <span>Found : {this.state.advertisementsTableData.length}</span>
+              </div>
+              <AdvertisementTable data = {this.state.advertisementsTableData} />
             </div>
-            <AdvertisementTable data = {this.state.advertisementsTableData} />
-          </div>:
-          <div> No data to show found </div>}
+          </div>
+        :
           <ChosenAdvertisement/>
+        }
       </div>
     );
   }
 }
+
+const AdvertisementsView = connect(mapStateToProps)(ConnectedAdvertisementsView);
+
+export default AdvertisementsView;

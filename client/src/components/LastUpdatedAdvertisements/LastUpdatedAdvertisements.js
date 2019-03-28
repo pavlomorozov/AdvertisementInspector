@@ -32,10 +32,10 @@ class LastUpdatedAdvertisements extends Component {
             this.state.lastAdvertisements.map(
               advertisement =>
                 <tr key={advertisement.id+"-"+advertisement.is_open}>
-                  <td style={{'border-color':'#7788AA'}}>
+                  <td style={{'borderColor':'#7788AA'}}>
                     <Status status = {advertisement} />
                   </td>
-                  <td style={{'border-color':'#7788AA'}}>
+                  <td style={{'borderColor':'#7788AA'}}>
                     <Advertisement advertisement = {advertisement} />
                   </td>
                 </tr>
