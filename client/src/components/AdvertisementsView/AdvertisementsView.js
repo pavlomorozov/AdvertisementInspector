@@ -26,8 +26,8 @@ class ConnectedAdvertisementsView extends Component {
        dateTo: todayString,
        advertisementsTableData: []
      };
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
+     this.handleChange = this.handleChange.bind(this);
+     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
