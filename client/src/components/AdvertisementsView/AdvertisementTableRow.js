@@ -67,18 +67,15 @@ class ConnectedAdvertisementTableRow extends Component {
         </td>
         <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           {this.props.advertisement.last_is_open 
-            ? <FontAwesomeIcon icon={faCheckCircle} />
-            : <FontAwesomeIcon icon={faTimesCircle} />
+            ? <FontAwesomeIcon style={{'color':'#2D882D'}} icon={faCheckCircle} />
+            : <FontAwesomeIcon style={{'color':'#A6A938'}} icon={faTimesCircle} />
           }
         </td>
-
-        
-
         <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           <a href={this.props.advertisement.ad_url}> > </a>
         </td>
         <td style={{'padding':'2px','borderColor':'#7788AA'}}>
-          <span style={{'color':'#525500'}}>
+          <span>
             {this.props.advertisement.caption}
           </span>
         </td>
@@ -91,16 +88,6 @@ class ConnectedAdvertisementTableRow extends Component {
         <td style={{'padding':'2px','borderColor':'#7788AA'}}>
           {this.props.advertisement.location}
         </td>
-
-        {/* <td className="col-md-10" style={{'border-color':'#7788AA'}}>
-          <span style={{'fontSize': 'small'}}>
-              <span> $: {this.props.advertisement.last_price}; </span>
-              <span> {this.props.advertisement.location}; </span>
-              <span> {this.props.advertisement.last_is_open ? "open" : "closed"}; </span>
-              <span> shown: {this.props.advertisement.open_days} days; </span>
-          </span>
-        </td> */}
-
       </tr>
     );
   }
