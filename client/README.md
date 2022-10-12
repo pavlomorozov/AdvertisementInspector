@@ -1,3 +1,7 @@
+<h1> This is the front end application folder </h1>
+
+<p>All further text generated autmatically</p>
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
