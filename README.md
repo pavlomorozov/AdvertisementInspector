@@ -8,7 +8,7 @@ large number of advertisements with a lot of duplicates and make impossible to s
 <p>Users with just one post expected to be owners of real estate posted.
 After data collected it is possible to see how many advertisements was open and how many was closed to see real estate market trends.</p>
 <p>Technologies used on server side are <b>NodeJS/Express</b> with <b>MySQL</b> database. 
-Server side application provides Rest endpoints for front-end single-page web application. The front-end built with <b>React/Redux</b> and <b>Bootstrap</b>. Here the UI overview:</p>
+Server side application provides Rest endpoints for front-end single-page web application. The front-end built with <b>React/Redux</b> and <b>Bootstrap</b>. The front-end application source code placed at <a href="https://github.com/pavlomorozov/AdvertisementInspector/tree/master/client">client</a> folder. Here the UI overview:</p>
 
 ![Front-end overview](https://github.com/pavlomorozov/AdvertisementInspector/blob/master/screenshot/overview.png)
 
